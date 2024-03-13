@@ -29,7 +29,7 @@ def settings_validation(self):
         public_url = self.doc_server_public_url
         jwt_secret = self.doc_server_jwt_secret
         jwt_header = self.doc_server_jwt_header
-        demo = False
+        demo = self.doc_server_demo
 
         check_mixed_content(base_url, public_url, demo)
         check_doc_serv_url(public_url, demo)
@@ -46,9 +46,11 @@ def check_doc_serv_url(public_url, demo):
         healthcheck = response.read()
 
         if not healthcheck:
-            get_message_error(os.path.join(public_url, "healthcheck") + " returned false.")
+            get_message_error(os.path.join(public_url, "healthcheck") + " returned false.", demo)
 
-    except:
+    except ValidationError as e:
+        get_message_error(str(e), demo)
+    except Exception:
         get_message_error("ONLYOFFICE cannot be reached", demo)
 
 
@@ -73,16 +75,18 @@ def check_doc_serv_command_service(env, url, jwt_secret, jwt_header, demo):
         )
 
         if response.json()["error"] == 6:
-            get_message_error("Authorization error")
+            get_message_error("Authorization error", demo)
 
         if response.json()["error"] != 0:
             get_message_error(
                 os.path.join(url, "coauthoring/CommandService.ashx")
                 + " returned error: "
-                + str(response.json()["error"])
+                + str(response.json()["error"]), demo
             )
 
-    except:
+    except ValidationError as e:
+        get_message_error(str(e), demo)
+    except Exception:
         get_message_error("Error when trying to check CommandService", demo)
 
 
@@ -127,7 +131,7 @@ def convert(env, file_url, public_url, jwt_secret, jwt_header):
             if "error" in response_json:
                 return get_conversion_error_message(response_json.get("error"))
         else:
-            return "Document conversion service returned status ${status_code}"
+            return f"Document conversion service returned status {response.status_code}"
 
     except:
         return "Document conversion service cannot be reached"
@@ -135,7 +139,7 @@ def convert(env, file_url, public_url, jwt_secret, jwt_header):
 
 def get_message_error(message, demo):
     if demo:
-        raise ValidationError("Error connecting to demo server (${error})")
+        raise ValidationError(f"Error connecting to demo server: {message}")
     else:
         raise ValidationError(message)
 
