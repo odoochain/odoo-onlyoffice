@@ -9,6 +9,7 @@
     <record id="group_onlyoffice_template_user" model="res.groups">
         <field name="name">User</field>
         <field name="category_id" ref="module_category_onlyoffice_template"/>
+        <field name="comment">Can open ONLYOFFICE templates for viewing and print them.</field>
     </record>
 
     <!-- Administrator role with full access -->
@@ -16,6 +17,7 @@
         <field name="name">Administrator</field>
         <field name="category_id" ref="module_category_onlyoffice_template"/>
         <field name="implied_ids" eval="[(4, ref('group_onlyoffice_template_user'))]"/>
+        <field name="comment">Can open, create, edit and print ONLYOFFICE templates.</field>
     </record>
     
     <!-- Access control rules -->
