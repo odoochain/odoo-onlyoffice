@@ -19,5 +19,5 @@ EditorComponent.components = {
   ...Component.components,
   EditorComponent,
 };
-EditorComponent.template = "onlyoffice_template.EditorComponent";
+EditorComponent.template = "onlyoffice_odoo_templates.EditorComponent";
 EditorComponent.props = ["model", "searchString", "level"];

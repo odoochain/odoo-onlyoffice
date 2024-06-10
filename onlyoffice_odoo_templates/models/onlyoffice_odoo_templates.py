@@ -9,7 +9,7 @@ from odoo.addons.onlyoffice_odoo.utils import file_utils
 
 
 class OnlyOfficeTemplate(models.Model):
-    _name = "onlyoffice.template"
+    _name = "onlyoffice.odoo.templates"
     _description = "ONLYOFFICE Templates"
 
     name = fields.Char(required=True, string="Template Name")

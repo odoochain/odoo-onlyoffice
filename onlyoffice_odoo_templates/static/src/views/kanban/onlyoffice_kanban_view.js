@@ -6,7 +6,7 @@ import { OnlyofficeKanbanRenderer } from "./onlyoffice_kanban_renderer";
 export const onlyofficeKanbanView = {
   ...kanbanView,
   Renderer: OnlyofficeKanbanRenderer,
-  buttonTemplate: "onlyoffice_template.OnlyofficeKanbanController.Buttons",
+  buttonTemplate: "onlyoffice_odoo_templates.OnlyofficeKanbanController.Buttons",
 };
 
 registry.category("views").add("onlyoffice_kanban", onlyofficeKanbanView);

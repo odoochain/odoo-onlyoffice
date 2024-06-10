@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_onlyoffice_templat,OnlyOffice Template,onlyoffice_template.model_onlyoffice_template,,0,0,0,0
-access_onlyoffice_template_user,OnlyOffice Template User Access,onlyoffice_template.model_onlyoffice_template,group_onlyoffice_template_user,1,0,0,0
-access_onlyoffice_template_admin,OnlyOffice Template Admin Access,onlyoffice_template.model_onlyoffice_template,group_onlyoffice_template_admin,1,1,1,1

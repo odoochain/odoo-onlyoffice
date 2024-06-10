@@ -53,12 +53,12 @@ export class TemplateDialog extends Component {
     onWillStart(async () => {
       const { resModel } = this.props.formControllerProps;
       const views = await this.viewService.loadViews({
-        resModel: "onlyoffice.template",
+        resModel: "onlyoffice.odoo.templates",
         context: this.props.context,
         views: [[false, "search"]],
       });
       await this.model.load({
-        resModel: "onlyoffice.template",
+        resModel: "onlyoffice.odoo.templates",
         domain: [["template_model_model", "=", resModel]],
         context: this.props.context,
         orderBy: "id",
@@ -79,7 +79,7 @@ export class TemplateDialog extends Component {
     const { domain, context } = this.model;
     const { records, length } = await this.dp.add(
       this.rpc("/web/dataset/search_read", {
-        model: "onlyoffice.template",
+        model: "onlyoffice.odoo.templates",
         fields: ["name", "create_date", "create_uid", "attachment_id", "mimetype"],
         domain,
         context,
@@ -133,5 +133,5 @@ export class TemplateDialog extends Component {
   }
 }
 
-TemplateDialog.template = "onlyoffice_template.TemplateDialog";
+TemplateDialog.template = "onlyoffice_odoo_templates.TemplateDialog";
 TemplateDialog.components = { Dialog, Pager };

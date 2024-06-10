@@ -2,8 +2,8 @@
 <odoo>
     <data>  
         <record id="view_onlyoffice_form" model="ir.ui.view">
-            <field name="name">onlyoffice.template.form</field>
-            <field name="model">onlyoffice.template</field>
+            <field name="name">onlyoffice.odoo.templates.form</field>
+            <field name="model">onlyoffice.odoo.templates</field>
             <field name="arch" type="xml">
                 <form string="Create template">
                     <sheet>
@@ -27,8 +27,8 @@
         </record>
         
         <record id="view_onlyoffice_kanban_search" model="ir.ui.view">
-            <field name="name">onlyoffice.template.kanban.search</field>
-            <field name="model">onlyoffice.template</field>
+            <field name="name">onlyoffice.odoo.templates.kanban.search</field>
+            <field name="model">onlyoffice.odoo.templates</field>
             <field name="arch" type="xml">
                 <search>
                     <field name="name"/>
@@ -44,8 +44,8 @@
         </record>
 
         <record id="view_onlyoffice_kanban" model="ir.ui.view">
-            <field name="name">onlyoffice.template.kanban</field>
-            <field name="model">onlyoffice.template</field>
+            <field name="name">onlyoffice.odoo.templates.kanban</field>
+            <field name="model">onlyoffice.odoo.templates</field>
             <field name="arch" type="xml">
                 <kanban js_class="onlyoffice_kanban">
                     <field name="id"/>
@@ -100,17 +100,17 @@
             </field>
         </record>
 
-        <record model="ir.actions.act_window" id="action_onlyoffice_template">
+        <record model="ir.actions.act_window" id="action_onlyoffice_odoo_templates">
                 <field name="name">ONLYOFFICE Templates</field>
-                <field name="res_model">onlyoffice.template</field>
+                <field name="res_model">onlyoffice.odoo.templates</field>
                 <field name="view_mode">kanban,form</field>
         </record>
 
         <menuitem id="onlyoffice_menu" 
             name="ONLYOFFICE Templates" 
-            web_icon="onlyoffice_template,static/description/icon.png"
+            web_icon="onlyoffice_odoo_templates,static/description/icon.png"
             sequence="30"
-            groups="onlyoffice_template.group_onlyoffice_template_user,onlyoffice_template.group_onlyoffice_template_admin"
-            action="action_onlyoffice_template"/>
+            groups="onlyoffice_odoo_templates.group_onlyoffice_odoo_templates_user,onlyoffice_odoo_templates.group_onlyoffice_odoo_templates_admin"
+            action="action_onlyoffice_odoo_templates"/>
     </data>
 </odoo>

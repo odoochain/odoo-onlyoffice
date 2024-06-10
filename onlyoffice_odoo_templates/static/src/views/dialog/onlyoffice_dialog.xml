@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
-    <t t-name="onlyoffice_template.TemplateDialog" owl="1">
+    <t t-name="onlyoffice_odoo_templates.TemplateDialog" owl="1">
         <div>
             <Dialog t-if="state.isOpen" title="dialogTitle" contentClass="'o-spreadsheet-templates-dialog'" footer="true" modalRef="modalRef">
                 <div class="o-pager">

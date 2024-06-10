@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
-    <t t-name="onlyoffice_template.TemplateEditor" owl="1">
+    <t t-name="onlyoffice_odoo_templates.TemplateEditor" owl="1">
         <html>
             <head>
                 <meta charset="UTF-8" />
@@ -35,10 +35,10 @@
                             <div class="o-onlyoffice-search-field">
                                 <input type="text" placeholder="Search field" t-model="state.searchString" t-on-input="onSearchInput"/>
                                 <button t-if="state.searchString" t-on-click="onCleanSearchClick">
-                                    <img src="/onlyoffice_template/static/svg/onlyoffice_clean_search_field.svg"/>
+                                    <img src="/onlyoffice_odoo_templates/static/svg/onlyoffice_clean_search_field.svg"/>
                                 </button>
                                 <button t-if="!state.searchString">
-                                    <img src="/onlyoffice_template/static/svg/onlyoffice_search.svg"/>
+                                    <img src="/onlyoffice_odoo_templates/static/svg/onlyoffice_search.svg"/>
                                 </button>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                 </div>
                 <div id="doceditor"/>
                 <div id="error" class="w-25 m-auto my-5 py-5 d-flex flex-column d-none">
-                    <img src="/onlyoffice_template/static/svg/onlyoffice_logo.svg" alt="ONLYOFFICE logo"/>
+                    <img src="/onlyoffice_odoo_templates/static/svg/onlyoffice_logo.svg" alt="ONLYOFFICE logo"/>
                     <div class="my-3 alert alert-danger">
                         <p>
                             ONLYOFFICE cannot be reached. Please contact admin.

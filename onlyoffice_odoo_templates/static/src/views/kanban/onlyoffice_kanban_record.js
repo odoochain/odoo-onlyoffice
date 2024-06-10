@@ -65,7 +65,7 @@ export class OnlyofficeKanbanRecord extends KanbanRecord {
   async editTemplate() {
     const action = {
       type: "ir.actions.client",
-      tag: "onlyoffice_template.TemplateEditor",
+      tag: "onlyoffice_odoo_templates.TemplateEditor",
       target: "current",
     };
     return this.actionService.doAction(action, {

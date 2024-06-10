@@ -1,4 +1,4 @@
-<t t-name="onlyoffice_template.EditorComponent" owl="1">
+<t t-name="onlyoffice_odoo_templates.EditorComponent" owl="1">
     <div class="o-onlyoffice-models-list" t-att-class="state.isExpanded ? 'o-onlyoffice-models-list_open' : null">
         <div class="o-onlyoffice-model" t-att-style="'padding-left:' + (props.level * 20) + 'px;'">
             <button t-on-click="toggleExpand" class="o-onlyoffice-model-button" t-att-class="state.isExpanded ? 'o-onlyoffice-model-button_open' : null">

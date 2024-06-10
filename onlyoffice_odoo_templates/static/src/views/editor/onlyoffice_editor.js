@@ -34,7 +34,7 @@ class TemplateEditor extends Component {
     onMounted(async () => {
       try {
         const models = JSON.parse(
-          await this.orm.call("onlyoffice.template", "get_fields_for_model", [this.props.template_model_model]),
+          await this.orm.call("onlyoffice.odoo.templates", "get_fields_for_model", [this.props.template_model_model]),
         );
 
         // Add keys to field
@@ -234,6 +234,6 @@ TemplateEditor.components = {
   ...Component.components,
   EditorComponent,
 };
-TemplateEditor.template = "onlyoffice_template.TemplateEditor";
+TemplateEditor.template = "onlyoffice_odoo_templates.TemplateEditor";
 
-registry.category("actions").add("onlyoffice_template.TemplateEditor", TemplateEditor);
+registry.category("actions").add("onlyoffice_odoo_templates.TemplateEditor", TemplateEditor);

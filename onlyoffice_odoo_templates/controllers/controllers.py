@@ -29,7 +29,7 @@ class Onlyoffice_Inherited_Connector(Onlyoffice_Connector):
         filename = data["name"]
 
         can_read = attachment.check_access_rights("read", raise_exception=False) and file_utils.can_view(filename)
-        hasAccess = http.request.env.user.has_group("onlyoffice_template.group_onlyoffice_template_admin")
+        hasAccess = http.request.env.user.has_group("onlyoffice_odoo_templates.group_onlyoffice_odoo_templates_admin")
         can_write = hasAccess and attachment.check_access_rights("write", raise_exception=False) and file_utils.can_edit(filename)
 
         if not can_read:
@@ -83,7 +83,7 @@ class OnlyofficeTemplate_Connector(http.Controller):
         if not user:
             return
 
-        template_record = self.get_record(template_id, "onlyoffice.template", self.get_user_from_token(oo_security_token))
+        template_record = self.get_record(template_id, "onlyoffice.odoo.templates", self.get_user_from_token(oo_security_token))
         if not template_record:
             print("Template not found")
             return
@@ -139,7 +139,7 @@ class OnlyofficeTemplate_Connector(http.Controller):
             var fields = {fields_json};
         """
 
-        with file_open("onlyoffice_template/controllers/fill_template.docbuilder", "r") as f:
+        with file_open("onlyoffice_odoo_templates/controllers/fill_template.docbuilder", "r") as f:
             docbuilder_content = docbuilder_content + f.read()
 
         record = self.get_record(record_id, model_name, user)
@@ -166,7 +166,7 @@ class OnlyofficeTemplate_Connector(http.Controller):
             builder.OpenFile("{url}");
         """
 
-        with file_open("onlyoffice_template/controllers/get_keys.docbuilder", "r") as f:
+        with file_open("onlyoffice_odoo_templates/controllers/get_keys.docbuilder", "r") as f:
             docbuilder_content = docbuilder_content + f.read()
 
         headers = {

@@ -18,7 +18,7 @@
 
     # always loaded
     'data': [
-        'security/onlyoffice_template_security.xml',
+        'security/onlyoffice_templates_security.xml',
         'security/ir.model.access.csv',
         'views/onlyoffice_menu_views.xml'
     ],
@@ -33,8 +33,8 @@
 
     'assets': {
         'web.assets_backend': [
-            'onlyoffice_template/static/src/css/*',
-            'onlyoffice_template/static/src/views/**/*',
+            'onlyoffice_odoo_templates/static/src/css/*',
+            'onlyoffice_odoo_templates/static/src/views/**/*',
         ],
     },
 }
