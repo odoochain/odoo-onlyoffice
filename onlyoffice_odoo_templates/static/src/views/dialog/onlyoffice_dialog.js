@@ -1,13 +1,13 @@
 /** @odoo-module **/
 import { Dialog } from "@web/core/dialog/dialog";
 import { Pager } from "@web/core/pager/pager";
-import { DropPrevious } from "web.concurrency";
+import { KeepLast } from "@web/core/utils/concurrency";
 import { SearchModel } from "@web/search/search_model";
 import { useService } from "@web/core/utils/hooks";
 import { useHotkey } from "@web/core/hotkeys/hotkey_hook";
 import { getDefaultConfig } from "@web/views/view";
 
-import { _t } from "web.core";
+import { _t } from "@web/core/l10n/translation";
 
 const { Component, useState, useSubEnv, useChildSubEnv, onWillStart } = owl;
 
@@ -21,7 +21,7 @@ export class TemplateDialog extends Component {
     this.data = this.env.dialogData;
     useHotkey("escape", () => this.data.close());
 
-    this.dialogTitle = this.env._t("Print from template");
+    this.dialogTitle = _t("Print from template");
     this.limit = 8;
     this.state = useState({
       isOpen: true,
@@ -48,7 +48,7 @@ export class TemplateDialog extends Component {
       searchModel: this.model,
     });
 
-    this.dp = new DropPrevious();
+    this.dp = new KeepLast();
 
     onWillStart(async () => {
       const { resModel } = this.props.formControllerProps;
@@ -77,19 +77,14 @@ export class TemplateDialog extends Component {
 
   async fetchTemplates(offset = 0) {
     const { domain, context } = this.model;
-    const { records, length } = await this.dp.add(
-      this.rpc("/web/dataset/search_read", {
-        model: "onlyoffice.odoo.templates",
-        fields: ["name", "create_date", "create_uid", "attachment_id", "mimetype"],
-        domain,
-        context,
-        offset,
-        limit: this.limit,
-        sort: "id",
-      }),
+    const records = await this.orm.searchRead(
+      "onlyoffice.odoo.templates",
+      domain,
+      ["name", "create_date", "create_uid", "attachment_id", "mimetype"],
+      { context, order: 'id', limit: this.limit, offset }
     );
     this.state.templates = records;
-    this.state.totalTemplates = length;
+    this.state.totalTemplates = await this.orm.searchCount("onlyoffice.odoo.templates", domain, { context });
   }
 
   async fillTemplate() {

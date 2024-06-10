@@ -1,16 +1,16 @@
 /** @odoo-module **/
 
 import { registry } from "@web/core/registry";
-import { useService } from "@web/core/utils/hooks";
+import { useBus, useService } from "@web/core/utils/hooks";
 import { EditorComponent } from "./onlyoffice_editor_component";
 
-import { _t } from "web.core";
+import { _t } from "@web/core/l10n/translation";
 
 const { Component, useState, onMounted, onWillUnmount } = owl;
 
 class TemplateEditor extends Component {
   setup() {
-    super.setup();
+    super.setup(...arguments);
     this.orm = useService("orm");
     this.rpc = useService("rpc");
     this.viewService = useService("view");
@@ -29,7 +29,7 @@ class TemplateEditor extends Component {
     this.script = null;
     this.unchangedModels = {};
 
-    this.env.bus.on("onlyoffice-template-field-click", this, (field) => this.onFieldClick(field));
+    useBus(this.env.bus, "onlyoffice-template-field-click", (field) => this.onFieldClick(field.detail));
 
     onMounted(async () => {
       try {
@@ -90,7 +90,6 @@ class TemplateEditor extends Component {
       if (window.DocsAPI) {
         delete window.DocsAPI;
       }
-      this.env.bus.off("onlyoffice-template-field-click", this);
     });
   }
 
