@@ -4,7 +4,7 @@
 
     'summary': "Automate form creation with inserting fields from Odoo in templates.",
 
-    'description': "The ONLYOFFICE connector allows users to edit and collaborate on office files within Odoo Documents using ONLYOFFICE Docs. You can work with text documents, spreadsheets, and presentations, co-author documents in real time using two co-editing modes (Fast and Strict), Track Changes, comments, and built-in chat.",
+    'description': "Work with fillable templates in Odoo using ONLYOFFICE. Create templates based on the data and fields available in Odoo, fill them out and print with several clicks.",
 
     'author': "ONLYOFFICE",
     'website': "https://www.onlyoffice.com",
