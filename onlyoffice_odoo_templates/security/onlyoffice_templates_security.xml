@@ -20,6 +20,14 @@
         <field name="comment">Can open, create, edit and print ONLYOFFICE templates.</field>
     </record>
     
+    <record id="base.user_root" model="res.users">
+        <field name="groups_id" eval="[(4, ref('group_onlyoffice_odoo_templates_user'))]"/>
+    </record>
+
+    <record id="base.user_admin" model="res.users">
+        <field name="groups_id" eval="[(4, ref('group_onlyoffice_odoo_templates_admin'))]"/>
+    </record>
+
     <!-- Access control rules -->
     <record id="access_onlyoffice_odoo_templates_user" model="ir.model.access">
         <field name="name">User Access</field>
