@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e-20240216\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-10 15:04+0000\n"
-"PO-Revision-Date: 2024-06-14 15:26+0300\n"
+"PO-Revision-Date: 2024-06-18 15:02+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -60,16 +60,14 @@ msgstr "Отменить"
 #: code:addons/onlyoffice_odoo_templates/static/src/views/editor/onlyoffice_editor.xml:0
 #, python-format
 msgid "Choose the field below to paste selected parameter to the cursor"
-msgstr ""
-"Выберите поле ниже, чтобы вставить выбранный параметр под курсор"
+msgstr "Выберите поле ниже, чтобы вставить выбранный параметр"
 
 #. module: onlyoffice_odoo_templates
 #. odoo-javascript
 #: code:addons/onlyoffice_odoo_templates/static/src/views/editor/onlyoffice_editor.js:0
 #, python-format
 msgid "Couldn't insert the field. Please check Automation API."
-msgstr ""
-"Нельзя вставить поле. Пожалуйста, обратитесь к API автоматизации."
+msgstr "Нельзя вставить поле. Пожалуйста, проверьте API автоматизацию."
 
 #. module: onlyoffice_odoo_templates
 #. odoo-javascript
@@ -91,7 +89,7 @@ msgstr "Создано"
 #. module: onlyoffice_odoo_templates
 #: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__create_date
 msgid "Created on"
-msgstr "Дата создания"
+msgstr "Дата создания:"
 
 #. module: onlyoffice_odoo_templates
 #: model_terms:ir.ui.view,arch_db:onlyoffice_odoo_templates.view_onlyoffice_kanban
@@ -145,7 +143,7 @@ msgstr "Канбан: нет действий для типа:"
 #. module: onlyoffice_odoo_templates
 #: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates____last_update
 msgid "Last Modified on"
-msgstr "Дата последнего изменения"
+msgstr "Дата последнего изменения:"
 
 #. module: onlyoffice_odoo_templates
 #: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__write_uid
@@ -155,7 +153,7 @@ msgstr "Последнее обновление"
 #. module: onlyoffice_odoo_templates
 #: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__write_date
 msgid "Last Updated on"
-msgstr "Дата последнего обновления"
+msgstr "Дата последнего обновления:"
 
 #. module: onlyoffice_odoo_templates
 #: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__mimetype
@@ -183,7 +181,7 @@ msgstr "Модель, для которой был создан шаблон."
 #: code:addons/onlyoffice_odoo_templates/static/src/views/editor/onlyoffice_editor.xml:0
 #, python-format
 msgid "Module/ section"
-msgstr "Модель / раздел"
+msgstr "Модуль / раздел"
 
 #. module: onlyoffice_odoo_templates
 #: model:ir.module.category,name:onlyoffice_odoo_templates.module_category_onlyoffice_odoo_templates
@@ -253,7 +251,7 @@ msgid ""
 "template."
 msgstr ""
 "Выберите существующий шаблон. Оставьте поле пустым, чтобы создать "
-"пустой шаблон"
+"пустой шаблон."
 
 #. module: onlyoffice_odoo_templates
 #: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__name
