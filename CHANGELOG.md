@@ -3,6 +3,10 @@
 ## 2.1.0
 ## Added
 - compatible with Odoo 17
+- advanced server settings for specifying internal addresses
+- validation of server settings on the settings page
+- trial period of 30 days for the demo server
+- link to docs cloud
 
 ## 2.0.0
 ## Added
