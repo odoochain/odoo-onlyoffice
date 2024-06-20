@@ -5,10 +5,10 @@
                 <svg width="3" height="6" viewBox="0 0 3 6" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 6V0L3 3L0 6Z" fill="black" fill-opacity="0.8"/>
                 </svg>
-                <div t-if="props.model.description" class="o-onlyoffice-model-description">
+                <div t-if="props.model.description" class="o-onlyoffice-model-description" t-att-title="props.model.description">
                     <t t-esc="props.model.description"/>
                 </div>
-                <div t-if="props.model.name" class="o-onlyoffice-model-name">
+                <div t-if="props.model.name" class="o-onlyoffice-model-name" t-att-title="props.model.name">
                     <t t-esc="props.model.name"/>
                 </div>
             </button>
@@ -23,11 +23,11 @@
                     </t>
                     <t t-else="">
                         <div t-on-click="() => this.onFieldClick(field)" class="o-onlyoffice-field">
-                            <div class="o-onlyoffice-field-name">
-                                <t t-esc="field.name"/>
-                            </div>
-                            <div class="o-onlyoffice-field-string">
+                            <div class="o-onlyoffice-field-string" t-att-title="field.string">
                                 <t t-esc="field.string"/>
+                            </div>
+                            <div class="o-onlyoffice-field-name" t-att-title="field.name">
+                                <t t-esc="field.name"/>
                             </div>
                         </div>
                         <t t-if="index == props.model.fields.length">

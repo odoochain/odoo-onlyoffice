@@ -74,14 +74,14 @@
       text-wrap: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-      color: var(--gray-900);
+      color: var(--gray-500);
     }
 
     .o-onlyoffice-field-string {
       text-wrap: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-      color: var(--gray-500);
+      color: var(--gray-900);
     }
   }
 
@@ -92,10 +92,6 @@
   .o-onlyoffice-field:active {
     background-color: var(--gray-200);
   }
-}
-
-.o-onlyoffice-models-list_open + .o-onlyoffice-field {
-  margin-top: 20px;
 }
 
 .o-onlyoffice-fields-separator {

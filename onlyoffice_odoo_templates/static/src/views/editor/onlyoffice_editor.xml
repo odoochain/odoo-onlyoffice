@@ -57,11 +57,11 @@
                                                 </t>
                                                 <t t-else="">
                                                     <div t-on-click="() => this.onFieldClick(field)" class="o-onlyoffice-field">
-                                                        <div class="o-onlyoffice-field-name">
-                                                            <t t-esc="field.name"/>
-                                                        </div>
-                                                        <div class="o-onlyoffice-field-string">
+                                                        <div class="o-onlyoffice-field-string" t-att-title="field.string">
                                                             <t t-esc="field.string"/>
+                                                        </div>
+                                                        <div class="o-onlyoffice-field-name" t-att-title="field.name">
+                                                            <t t-esc="field.name"/>
                                                         </div>
                                                     </div>
                                                 </t>
