@@ -106,6 +106,7 @@ class TemplateEditor extends Component {
   }
 
   formatModels(models, parentNames = []) {
+    if (!models.fields) return models;
     models.fields = models.fields.map((field) => {
       const key = [...parentNames, field.name].join(" ");
       field.key = key;
@@ -127,6 +128,7 @@ class TemplateEditor extends Component {
 
   setModelsFilter() {
     const searchAndExpand = (models) => {
+      if (!models.fields) return;
       const searchString = this.state.searchString.toLowerCase();
       const filteredFields = models.fields.filter(field => {
         if (field.key.split(' ').pop().toLowerCase().includes(searchString)) {

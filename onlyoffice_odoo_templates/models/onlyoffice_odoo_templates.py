@@ -63,16 +63,16 @@ class OnlyOfficeTemplate(models.Model):
 
         def process_model(model_name):
             if self.is_system_model(model_name):
-                return None
+                return {}
             if model_name in processed_models:
-                return None
+                return {}
 
             processed_models.add(model_name)
 
             model = self.env["ir.model"].search([("model", "=", model_name)], limit=1)
             if not model:
                 processed_models.discard(model_name)
-                return None
+                return {}
             description = model.name
 
             fields = self.env[model_name].fields_get([], attributes=("name", "type", "string", "relation"))
@@ -108,6 +108,8 @@ class OnlyOfficeTemplate(models.Model):
 
                             related_field_list = []
                             for (related_field_name, related_field_props) in related_fields.items():
+                                if related_field_props["type"] in ["html", "binary", "json"]:
+                                    continue  # TODO:
                                 if self.is_system_field(related_field_name):
                                     continue
                                 related_field_dict = {
@@ -121,7 +123,8 @@ class OnlyOfficeTemplate(models.Model):
                                 "description": related_description,
                                 "fields": related_field_list,
                             }
-                            field_dict["related_model"] = related_model_info
+                            if related_field_list:
+                                field_dict["related_model"] = related_model_info
                             cached_models[related_model] = related_model_info
                         else:
                             processed_model = process_model(related_model)
@@ -213,7 +216,7 @@ class OnlyOfficeTemplate(models.Model):
         if field_name in system_fields:
             return True
 
-        system_fields_prefixes = ["in_groups_", "sel_groups_", "message_", "activity_", "website_"]
+        system_fields_prefixes = ["in_group_", "sel_groups_", "message_", "activity_", "website_"]
         for prefix in system_fields_prefixes:
             if field_name.startswith(prefix):
                 return True
