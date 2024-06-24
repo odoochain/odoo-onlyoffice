@@ -18,7 +18,7 @@
                         </group>
                         <group string="Template uploading">
                             <field name="file"
-                                options="{'accepted_file_extensions': '.docx,.docxf'}"
+                                options="{'accepted_file_extensions': '.pdf'}"
                                 help="Select an existing template. Leave the field blank to create a blank template."/>
                         </group>
                     </sheet>

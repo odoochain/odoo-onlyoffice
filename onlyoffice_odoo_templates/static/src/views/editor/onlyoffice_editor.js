@@ -212,7 +212,7 @@ class TemplateEditor extends Component {
       });
       var oParagraph = Api.CreateParagraph();
       oParagraph.AddElement(oTextForm);
-      oDocument.InsertContent([oParagraph], true, { KeepTextOnly: true });
+      oDocument.InsertContent([oParagraph], false, { KeepTextOnly: true }); // TODO: change isInline to true after fix 68783
     });
   };
 
@@ -228,7 +228,7 @@ class TemplateEditor extends Component {
       oCheckBoxForm.ToInline();
       var oParagraph = Api.CreateParagraph();
       oParagraph.AddElement(oCheckBoxForm);
-      oDocument.InsertContent([oParagraph], true, { KeepTextOnly: true });
+      oDocument.InsertContent([oParagraph], false, { KeepTextOnly: true }); // TODO: change isInline to true after fix 68783
     });
   };
 }
