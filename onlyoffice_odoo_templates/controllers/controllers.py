@@ -44,7 +44,7 @@ class OnlyofficeTemplate_Connector(http.Controller):
     def get_filled_template(self, template_id, record_id, model_name):
         jwt_secret = config_utils.get_jwt_secret(request.env)
         jwt_header = config_utils.get_jwt_header(request.env)
-        odoo_url = config_utils.get_odoo_url(request.env)
+        odoo_url = config_utils.get_base_or_odoo_url(request.env)
         docserver_url = config_utils.get_doc_server_public_url(request.env)
         docbuilder_url = f"{docserver_url}docbuilder"
         internal_jwt_secret = config_utils.get_internal_jwt_secret(request.env)
@@ -91,7 +91,7 @@ class OnlyofficeTemplate_Connector(http.Controller):
 
         jwt_secret = config_utils.get_jwt_secret(request.env)
         jwt_header = config_utils.get_jwt_header(request.env)
-        odoo_url = config_utils.get_odoo_url(request.env)
+        odoo_url = config_utils.get_base_or_odoo_url(request.env)
         docserver_url = config_utils.get_doc_server_public_url(request.env)
         docbuilder_url = f"{docserver_url}docbuilder"
 
@@ -133,7 +133,7 @@ class OnlyofficeTemplate_Connector(http.Controller):
             print(e)  # TODO
             fields_json = ""
 
-        url = f"{config_utils.get_odoo_url(http.request.env)}onlyoffice/template/download/{attachment_id}?oo_security_token={oo_security_token}"
+        url = f"{config_utils.get_base_or_odoo_url(http.request.env)}onlyoffice/template/download/{attachment_id}?oo_security_token={oo_security_token}"
         docbuilder_content = f"""
             builder.OpenFile("{url}");
             var fields = {fields_json};
@@ -161,7 +161,7 @@ class OnlyofficeTemplate_Connector(http.Controller):
 
     @http.route("/onlyoffice/template/callback/get_keys", auth="public")
     def get_keys(self, attachment_id, oo_security_token):
-        url = f"{config_utils.get_odoo_url(http.request.env)}onlyoffice/template/download/{attachment_id}?oo_security_token={oo_security_token}"
+        url = f"{config_utils.get_base_or_odoo_url(http.request.env)}onlyoffice/template/download/{attachment_id}?oo_security_token={oo_security_token}"
         docbuilder_content = f"""
             builder.OpenFile("{url}");
         """
