@@ -31,10 +31,6 @@
 }
 
 @media (max-width: 767px) {
-    .onlyoffice_link_pane {
-        margin-left: 0;
-    }
-
     .onlyoffice_link_container {
         width: 345px;
         height: 169px;
