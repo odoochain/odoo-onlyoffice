@@ -14,7 +14,7 @@ class Format:
 
 def get_supported_formats():
     return [
-        Format("djvu", "word"),
+        Format("djvu", "pdf"),
         Format("doc", "word", convert_to=["docx", "docm", "dotm", "dotx", "epub", "fb2", "html", "odt", "ott", "pdf", "pdfa", "rtf", "txt"]),
         Format("docm", "word", convert_to=["docx", "dotm", "dotx", "epub", "fb2", "html", "odt", "ott", "pdf", "pdfa", "rtf", "txt"]),
         Format(
@@ -23,7 +23,7 @@ def get_supported_formats():
             True,
             convert_to=["docm", "dotm", "dotx", "epub", "fb2", "html", "odt", "ott", "pdf", "pdfa", "rtf", "txt"],
         ),
-        Format("docxf", "word", convert_to=["docx", "docm", "dotm", "dotx", "epub", "fb2", "html", "odt", "ott", "pdf", "pdfa", "rtf", "txt"]),
+        Format("docxf", "pdf", convert_to=["docx", "docm", "dotm", "dotx", "epub", "fb2", "html", "odt", "ott", "pdf", "pdfa", "rtf", "txt"]),
         Format("dot", "word", convert_to=["docx", "docm", "dotm", "dotx", "epub", "fb2", "html", "odt", "ott", "pdf", "pdfa", "rtf", "txt"]),
         Format("dotm", "word", convert_to=["docx", "docm", "dotx", "epub", "fb2", "html", "odt", "ott", "pdf", "pdfa", "rtf", "txt"]),
         Format("dotx", "word", convert_to=["docx", "docm", "dotm", "epub", "fb2", "html", "odt", "ott", "pdf", "pdfa", "rtf", "txt"]),
@@ -34,19 +34,19 @@ def get_supported_formats():
         Format("mht", "word", convert_to=["docx", "docm", "dotm", "dotx", "epub", "fb2", "odt", "ott", "pdf", "pdfa", "rtf", "txt"]),
         Format("odt", "word", convert_to=["docx", "docm", "dotm", "dotx", "epub", "fb2", "html", "ott", "pdf", "pdfa", "rtf", "txt"]),
         Format("ott", "word", convert_to=["docx", "docm", "dotm", "dotx", "epub", "fb2", "html", "odt", "pdf", "pdfa", "rtf", "txt"]),
-        Format("oxps", "word", convert_to=["docx", "docm", "dotm", "dotx", "epub", "fb2", "html", "odt", "ott", "pdf", "pdfa", "rtf", "txt"]),
+        Format("oxps", "pdf", convert_to=["docx", "docm", "dotm", "dotx", "epub", "fb2", "html", "odt", "ott", "pdf", "pdfa", "rtf", "txt"]),
         Format(
             "pdf",
-            "word",
+            "pdf",
             True,
             convert_to=["docx", "docm", "dotm", "dotx", "epub", "fb2", "html", "odt", "ott", "pdfa", "rtf", "txt"],
             fill_form=True
             ),
         Format("rtf", "word", convert_to=["docx", "docm", "dotm", "dotx", "epub", "fb2", "html", "odt", "ott", "pdf", "pdfa", "txt"]),
         Format("txt", "word"),
-        Format("xps", "word", convert_to=["docx", "docm", "dotm", "dotx", "epub", "fb2", "html", "odt", "ott", "pdf", "pdfa", "rtf", "txt"]),
+        Format("xps", "pdf", convert_to=["docx", "docm", "dotm", "dotx", "epub", "fb2", "html", "odt", "ott", "pdf", "pdfa", "rtf", "txt"]),
         Format("xml", "word", convert_to=["docx", "docm", "dotm", "dotx", "epub", "fb2", "html", "odt", "ott", "pdf", "pdfa", "rtf", "txt"]),
-        Format("oform", "word"),
+        Format("oform", "pdf"),
         Format("csv", "cell"),
         Format("fods", "cell", convert_to=["xlsx", "csv", "ods", "ots", "pdf", "pdfa", "xlsm", "xltm", "xltx"]),
         Format("ods", "cell", convert_to=["xlsx", "csv", "ots", "pdf", "pdfa", "xlsm", "xltm", "xltx"]),
