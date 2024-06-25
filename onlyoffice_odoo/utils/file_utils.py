@@ -74,7 +74,7 @@ def get_default_name_by_type(str):
     if str == "slide":
         return "Presentation"
     if str == "form":
-        return "Form template"
+        return "PDF form"
 
     return None
 
