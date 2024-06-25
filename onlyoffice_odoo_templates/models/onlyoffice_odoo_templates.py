@@ -62,8 +62,6 @@ class OnlyOfficeTemplate(models.Model):
         cached_models = {}
 
         def process_model(model_name):
-            if self.is_system_model(model_name):
-                return {}
             if model_name in processed_models:
                 return {}
 
@@ -77,9 +75,12 @@ class OnlyOfficeTemplate(models.Model):
 
             fields = self.env[model_name].fields_get([], attributes=("name", "type", "string", "relation"))
 
+            form_fields = self.env[model_name].get_view()['models']
+            form_fields = form_fields[model_name]
+
             field_list = []
             for field_name, field_props in fields.items():
-                if self.is_system_field(field_name):
+                if field_name not in form_fields:
                     continue
 
                 field_type = field_props["type"]
@@ -105,12 +106,13 @@ class OnlyOfficeTemplate(models.Model):
                             related_description = self.env["ir.model"].search([("model", "=", related_model)], limit=1)
                             related_description = related_description.name
                             related_fields = self.env[related_model].fields_get([], attributes=("name", "type", "string"))
-
+                            related_form_fields = self.env[related_model].get_view()['models']
+                            related_form_fields = related_form_fields[related_model]
                             related_field_list = []
                             for (related_field_name, related_field_props) in related_fields.items():
                                 if related_field_props["type"] in ["html", "binary", "json"]:
                                     continue  # TODO:
-                                if self.is_system_field(related_field_name):
+                                if related_field_name not in related_form_fields:
                                     continue
                                 related_field_dict = {
                                     "name": related_field_name,
@@ -146,79 +148,3 @@ class OnlyOfficeTemplate(models.Model):
         models_info = process_model(model_name)
         data = json.dumps(models_info, ensure_ascii=False)
         return data
-
-    def is_system_model(self, model_name):
-        system_models = {
-            "ir.attachment",  # Attachments
-            "ir.config_parameter",  # Configuration parameters
-            "ir.cron",  # Scheduled tasks
-            "ir.filters",  # Filters
-            "ir.mail_server",  # Mail server
-            "ir.rule",  # Access rules
-            "ir.sequence",  # Sequences
-            "ir.translation",  # Translations
-            "res.groups",  # User groups
-        }
-
-        if model_name in system_models:
-            return True
-
-        system_models_prefixes = ["ir.model.", "ir.module.", "ir.actions", "base.language", "mail.", "discuss."]
-        for prefix in system_models_prefixes:
-            if model_name.startswith(prefix):
-                return True
-
-        return False
-
-    def is_system_field(self, field_name):
-        system_fields = [
-            # Fields related to groups and access
-            "groups_id",
-            "access_token",
-            "access_url",
-            "access_warning",
-            "accesses_count",
-            "access_ids",
-            
-            # Fields for tracking activity and updates
-            "last_activity",
-            "__last_update",
-            
-            # Fields for token management and authentication
-            "ocn_token",
-            "payment_token_count",
-            "payment_token_id",
-            "payment_token_ids",
-            "suitable_payment_token_ids",
-            "signup_token",
-            "google_gmail_access_token",
-            "google_gmail_access_token_expiration",
-            
-            # Fields for user management and permissions
-            "create_uid",
-            "write_uid",
-            "create_date",
-            "write_date",
-            "login",
-            "new_password",
-            "password",
-            
-            # Fields for auditing and tracking
-            "log_ids",
-            "edi_error_count",
-            "edi_error_message",
-            "extract_error_message",
-
-            # Other
-            "self",
-        ]
-
-        if field_name in system_fields:
-            return True
-
-        system_fields_prefixes = ["in_group_", "sel_groups_", "message_", "activity_", "website_"]
-        for prefix in system_fields_prefixes:
-            if field_name.startswith(prefix):
-                return True
-
-        return False
