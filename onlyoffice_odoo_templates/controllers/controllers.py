@@ -184,12 +184,12 @@ class OnlyofficeTemplate_Connector(http.Controller):
 
         attachment = self.get_record(attachment_id, "ir.attachment", self.get_user_from_token(oo_security_token))
 
-        attachment_name = getattr(attachment, "display_name", getattr(attachment, "name", f"Template - {attachment_id}.docxf"))
+        attachment_name = getattr(attachment, "display_name", getattr(attachment, "name", f"Template - {attachment_id}.pdf"))
 
         if attachment:
             template_content = base64.b64decode(attachment.datas)
             headers = {
-                "Content-Type": file_utils.get_mime_by_ext("docx"),
+                "Content-Type": file_utils.get_mime_by_ext("pdf"),
                 "Content-Disposition": f"attachment; filename={attachment_name}",
             }
             return request.make_response(template_content, headers)

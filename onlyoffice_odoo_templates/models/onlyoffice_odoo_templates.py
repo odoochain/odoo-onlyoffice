@@ -18,12 +18,12 @@ class OnlyOfficeTemplate(models.Model):
     template_model_model = fields.Char("Model", related="template_model_id.model")
     file = fields.Binary(string="Upload an existing template")
     attachment_id = fields.Many2one("ir.attachment", readonly=True)
-    mimetype = fields.Char(default="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+    mimetype = fields.Char(default="application/pdf")
 
     @api.onchange("name")
     def _onchange_name(self):
         if self.attachment_id:
-            self.attachment_id.name = self.name + ".docxf"
+            self.attachment_id.name = self.name + ".pdf"
             self.attachment_id.display_name = self.name
 
     @api.onchange("file")
@@ -34,8 +34,8 @@ class OnlyOfficeTemplate(models.Model):
 
     @api.model
     def create(self, vals):
-        file = vals.get("file") or base64.encodebytes(file_utils.get_default_file_template(self.env.user.lang, "docx"))
-        mimetype = file_utils.get_mime_by_ext("docx")
+        file = vals.get("file") or base64.encodebytes(file_utils.get_default_file_template(self.env.user.lang, "pdf"))
+        mimetype = file_utils.get_mime_by_ext("pdf")
 
         vals["file"] = file
         vals["mimetype"] = mimetype
@@ -45,7 +45,7 @@ class OnlyOfficeTemplate(models.Model):
         if datas:
             attachment = self.env["ir.attachment"].create(
                 {
-                    "name": vals.get("name", record.name) + ".docxf",
+                    "name": vals.get("name", record.name) + ".pdf",
                     "display_name": vals.get("name", record.name),
                     "mimetype": vals.get("mimetype", ""),
                     "datas": datas,
@@ -80,10 +80,11 @@ class OnlyOfficeTemplate(models.Model):
 
             field_list = []
             for field_name, field_props in fields.items():
-                if field_name not in form_fields:
+                field_type = field_props["type"]
+
+                if field_type in ["one2many", "many2many", "many2one"] and field_name not in form_fields:
                     continue
 
-                field_type = field_props["type"]
                 if field_type in ["html", "binary", "json"]:
                     continue  # TODO:
 

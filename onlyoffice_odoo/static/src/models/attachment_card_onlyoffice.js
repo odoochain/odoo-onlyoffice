@@ -13,15 +13,16 @@ import { useService } from "@web/core/utils/hooks";
 
 const oo_editable_formats = [
     "docx",
-    "docxf",
     "xlsx",
     "pptx",
+    "pdf",
 ]
 
 const oo_viewable_formats = [
     "djvu",
     "doc",
     "docm",
+    "docxf",
     "dot",
     "dotm",
     "dotx",
@@ -33,12 +34,10 @@ const oo_viewable_formats = [
     "odt",
     "ott",
     "oxps",
-    "pdf",
     "rtf",
     "txt",
     "xps",
     "xml",
-    "oform",
     "csv",
     "fods",
     "ods",
