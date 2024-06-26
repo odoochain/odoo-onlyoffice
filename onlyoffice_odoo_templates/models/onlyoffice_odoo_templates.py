@@ -80,10 +80,11 @@ class OnlyOfficeTemplate(models.Model):
 
             field_list = []
             for field_name, field_props in fields.items():
-                if field_name not in form_fields:
+                field_type = field_props["type"]
+
+                if field_type in ["one2many", "many2many", "many2one"] and field_name not in form_fields:
                     continue
 
-                field_type = field_props["type"]
                 if field_type in ["html", "binary", "json"]:
                     continue  # TODO:
 
