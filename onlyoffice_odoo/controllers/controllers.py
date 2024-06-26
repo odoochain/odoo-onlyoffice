@@ -34,17 +34,6 @@ class Onlyoffice_Connector(http.Controller):
             ("Content-Type", "text/plain"),
             ("Content-Disposition", "attachment; filename=test.txt")
         ]
-
-        if jwt_utils.is_jwt_enabled(request.env):
-            token = request.httprequest.headers.get(config_utils.get_jwt_header(request.env))
-            if token:
-                token = token[len("Bearer "):]
-
-            if not token:
-                raise Exception("expected JWT")
-
-            jwt_utils.decode_token(request.env, token)
-
         response = request.make_response(content, headers)
         return response
 

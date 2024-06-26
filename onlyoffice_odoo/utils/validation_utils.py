@@ -14,8 +14,7 @@ def valid_url(url):
     ip_pattern = "^([0-9]{1,3}\.){3}[0-9]{1,3}$"
     no_protocol_pattern = "^(http|https):\/\/[0-9A-z.]+.[0-9A-z.]+(|\/)$"
     patterns = [
-        "^https:\/\/[0-9A-z.]+.[0-9A-z.]+.[a-z]+$",
-        "^http:\/\/[0-9A-z.]+.[0-9A-z.]+.[a-z]+$",
+        "^(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32}((\.[\w-]{1,32})*)?)[\/\w-]*$",
         ip_pattern,
         no_protocol_pattern,
     ]
