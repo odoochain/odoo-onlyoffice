@@ -107,5 +107,12 @@
             sequence="30"
             groups="onlyoffice_odoo_templates.group_onlyoffice_odoo_templates_user,onlyoffice_odoo_templates.group_onlyoffice_odoo_templates_admin"
             action="action_onlyoffice_odoo_templates"/>
+
+        <menuitem 
+            id="onlyoffice_submenu" 
+            name="Templates" 
+            parent="onlyoffice_menu" 
+            action="action_onlyoffice_odoo_templates"
+        />
     </data>
 </odoo>
