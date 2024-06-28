@@ -85,7 +85,7 @@ class OnlyOfficeTemplate(models.Model):
                 if field_type in ["one2many", "many2many", "many2one"] and field_name not in form_fields:
                     continue
 
-                if field_type in ["html", "binary", "json"]:
+                if field_type in ["html", "json"]:
                     continue  # TODO:
 
                 field_dict = {
@@ -111,7 +111,7 @@ class OnlyOfficeTemplate(models.Model):
                             related_form_fields = related_form_fields[related_model]
                             related_field_list = []
                             for (related_field_name, related_field_props) in related_fields.items():
-                                if related_field_props["type"] in ["html", "binary", "json"]:
+                                if related_field_props["type"] in ["html", "json"]:
                                     continue  # TODO:
                                 if related_field_name not in related_form_fields:
                                     continue

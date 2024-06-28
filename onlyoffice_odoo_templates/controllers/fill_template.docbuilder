@@ -283,7 +283,19 @@ function fillForm(oForm, data = null) {
     if (oFormFormType === "radioButtonForm") {}
 
     if (oFormFormType === "pictureForm") {
-        // TODO: oForm.SetImage("");
+        function fillPictureForm (data) {
+            if (typeof data === 'string') {
+                oForm.SetImage(`data:image/png;base64, ${data}`);
+            }
+        }
+
+        if (data === null) {
+            var oFormKey = oForm.GetFormKey();
+            data = getData(oFormKey);
+            fillPictureForm(data);
+        } else {
+            fillPictureForm(data);
+        }
     }
 }
 
