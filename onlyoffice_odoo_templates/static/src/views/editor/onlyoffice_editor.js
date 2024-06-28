@@ -16,7 +16,8 @@ class TemplateEditor extends Component {
     this.viewService = useService("view");
     this.EditorComponent = EditorComponent;
     this.notificationService = useService("notification");
-
+    this.cookies = useService("cookie");
+    
     this.state = useState({
       models: null,
       searchString: "",
@@ -57,6 +58,11 @@ class TemplateEditor extends Component {
             this.state.models = formattedModels;
             this.documentReady = true;
           },
+        };
+        const theme = this.cookies.current.color_scheme;
+        config.editorConfig.customization = {
+          ...config.editorConfig.customization,
+          uiTheme: theme ? `theme-${theme}` : "theme-light",
         };
         this.config = config;
 
