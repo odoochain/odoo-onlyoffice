@@ -6,6 +6,7 @@ import { SearchModel } from "@web/search/search_model";
 import { useService } from "@web/core/utils/hooks";
 import { useHotkey } from "@web/core/hotkeys/hotkey_hook";
 import { getDefaultConfig } from "@web/views/view";
+import { AlertDialog } from "@web/core/confirmation_dialog/confirmation_dialog";
 
 import { _t } from "web.core";
 
@@ -17,6 +18,7 @@ export class TemplateDialog extends Component {
     this.rpc = useService("rpc");
     this.viewService = useService("view");
     this.notificationService = useService("notification");
+    this.dialog = useService("dialog");
 
     this.data = this.env.dialogData;
     useHotkey("escape", () => this.data.close());
@@ -88,6 +90,13 @@ export class TemplateDialog extends Component {
         sort: "id",
       }),
     );
+    if (!length) {
+      this.dialog.add(AlertDialog, {
+        title: this.dialogTitle,
+        body: this.env._t("You don't have any templates yet. Please go to the ONLYOFFICE Templates app to create a new template or ask your admin to create it."),
+      });
+      return this.data.close();
+    }
     this.state.templates = records;
     this.state.totalTemplates = length;
   }
