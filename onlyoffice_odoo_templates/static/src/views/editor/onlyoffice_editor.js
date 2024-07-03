@@ -16,7 +16,8 @@ class TemplateEditor extends Component {
     this.viewService = useService("view");
     this.EditorComponent = EditorComponent;
     this.notificationService = useService("notification");
-
+    this.cookies = useService("cookie");
+    
     this.state = useState({
       models: null,
       searchString: "",
@@ -33,8 +34,23 @@ class TemplateEditor extends Component {
 
     onMounted(async () => {
       try {
+        if (!this.props.id) {
+          const urlParams = new URLSearchParams(window.location.hash);
+          let id = urlParams.get('id');
+          if (!id) return
+          this.props.id = id;
+        }
+
+        const [{ template_model_model, attachment_id }] = await this.orm.read("onlyoffice.odoo.templates", [parseInt(this.props.id)], ["template_model_model", "attachment_id"]);
+
+        // Set id to URL
+        if (!new URLSearchParams(window.location.hash).has("id")) {
+          const newUrl = window.location.href + `&id=${this.props.id}`;
+          history.pushState(null, null, newUrl);
+        }
+
         const models = JSON.parse(
-          await this.orm.call("onlyoffice.odoo.templates", "get_fields_for_model", [this.props.template_model_model]),
+          await this.orm.call("onlyoffice.odoo.templates", "get_fields_for_model", [template_model_model]),
         );
 
         // Add keys to field
@@ -42,7 +58,7 @@ class TemplateEditor extends Component {
         this.unchangedModels = formattedModels;
 
         const response = await this.rpc(`/onlyoffice/template/editor`, {
-          attachment_id: this.props.attachment_id[0],
+          attachment_id: attachment_id[0],
         });
         const config = JSON.parse(response.editorConfig);
         config.events = {
@@ -57,6 +73,11 @@ class TemplateEditor extends Component {
             this.state.models = formattedModels;
             this.documentReady = true;
           },
+        };
+        const theme = this.cookies.current.color_scheme;
+        config.editorConfig.customization = {
+          ...config.editorConfig.customization,
+          uiTheme: theme ? `theme-${theme}` : "theme-light",
         };
         this.config = config;
 
@@ -195,6 +216,9 @@ class TemplateEditor extends Component {
         if (type === "boolean") {
           this.createCheckBoxForm(field);
         }
+        if (type === "binary") {
+          this.createPictureForm(field);
+        }
       }
     }
   }
@@ -227,6 +251,22 @@ class TemplateEditor extends Component {
       oCheckBoxForm.ToInline();
       var oParagraph = Api.CreateParagraph();
       oParagraph.AddElement(oCheckBoxForm);
+      oDocument.InsertContent([oParagraph], true, { KeepTextOnly: true });
+    });
+  };
+
+  createPictureForm = (data) => {
+    Asc.scope.data = data;
+    window.connector.callCommand(() => {
+      var oDocument = Api.GetDocument();
+      var oPictureForm = Api.CreatePictureForm({
+        key: Asc.scope.data.key,
+        placeholder: Asc.scope.data.string,
+        tip: Asc.scope.data.string,
+        tag: Asc.scope.data.model,
+      });
+      var oParagraph = Api.CreateParagraph();
+      oParagraph.AddElement(oPictureForm);
       oDocument.InsertContent([oParagraph], true, { KeepTextOnly: true });
     });
   };
