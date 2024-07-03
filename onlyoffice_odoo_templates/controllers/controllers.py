@@ -254,12 +254,16 @@ class OnlyofficeTemplate_Connector(http.Controller):
                             continue
                         field_type = record._fields[field].type
                         data = record.read([field])[0][field]
-                        if field_type in ["html", "binary", "json"]:
+                        if field_type in ["html", "json"]:
                             continue  # TODO
                         elif field_type == "boolean":
                             result[field] = str(data).lower()
                         elif isinstance(data, tuple):
                             result[field] = str(data[1])
+                        elif field_type == "binary" and isinstance(data, bytes):
+                            img = re.search(r"'(.*?)'", str(data))
+                            if img:
+                                result[field] = img.group(1)
                         elif data:
                             if field_type in ["float", "integer", "char", "text"]:
                                 result[field] = str(data)

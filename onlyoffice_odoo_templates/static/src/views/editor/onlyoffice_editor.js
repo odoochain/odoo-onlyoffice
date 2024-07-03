@@ -217,6 +217,9 @@ class TemplateEditor extends Component {
         if (type === "boolean") {
           this.createCheckBoxForm(field);
         }
+        if (type === "binary") {
+          this.createPictureForm(field);
+        }
       }
     }
   }
@@ -249,6 +252,22 @@ class TemplateEditor extends Component {
       oCheckBoxForm.ToInline();
       var oParagraph = Api.CreateParagraph();
       oParagraph.AddElement(oCheckBoxForm);
+      oDocument.InsertContent([oParagraph], true, { KeepTextOnly: true });
+    });
+  };
+
+  createPictureForm = (data) => {
+    Asc.scope.data = data;
+    window.connector.callCommand(() => {
+      var oDocument = Api.GetDocument();
+      var oPictureForm = Api.CreatePictureForm({
+        key: Asc.scope.data.key,
+        placeholder: Asc.scope.data.string,
+        tip: Asc.scope.data.string,
+        tag: Asc.scope.data.model,
+      });
+      var oParagraph = Api.CreateParagraph();
+      oParagraph.AddElement(oPictureForm);
       oDocument.InsertContent([oParagraph], true, { KeepTextOnly: true });
     });
   };
