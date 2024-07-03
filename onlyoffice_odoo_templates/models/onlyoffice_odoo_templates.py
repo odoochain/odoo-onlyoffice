@@ -3,10 +3,10 @@ import copy
 import json
 import re
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 from odoo.addons.onlyoffice_odoo.utils import file_utils
-
+from odoo.addons.onlyoffice_odoo_templates.utils import pdf_utils
 
 class OnlyOfficeTemplate(models.Model):
     _name = "onlyoffice.odoo.templates"
@@ -34,6 +34,12 @@ class OnlyOfficeTemplate(models.Model):
 
     @api.model
     def create(self, vals):
+        if vals.get("file"):
+            decode_file = base64.b64decode(vals.get("file"))
+            is_pdf_form = pdf_utils.is_pdf_form(decode_file)
+            if not is_pdf_form:
+                raise UserError(_("Only PDF Form can be uploaded."))
+
         file = vals.get("file") or base64.encodebytes(file_utils.get_default_file_template(self.env.user.lang, "pdf"))
         mimetype = file_utils.get_mime_by_ext("pdf")
 
