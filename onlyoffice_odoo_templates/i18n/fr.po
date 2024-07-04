@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e-20240216\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-10 15:04+0000\n"
-"PO-Revision-Date: 2024-06-18 14:46+0300\n"
+"POT-Creation-Date: 2024-07-03 08:20+0000\n"
+"PO-Revision-Date: 2024-07-03 17:38+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. module: onlyoffice_odoo_templates
 #: model:res.groups,name:onlyoffice_odoo_templates.group_onlyoffice_odoo_templates_admin
@@ -37,8 +37,7 @@ msgstr "Pièce jointe"
 #. module: onlyoffice_odoo_templates
 #: model:res.groups,comment:onlyoffice_odoo_templates.group_onlyoffice_odoo_templates_user
 msgid "Can open ONLYOFFICE templates for viewing and print them."
-msgstr ""
-"Peut ouvrir des modèles ONLYOFFICE pour les afficher et les imprimer."
+msgstr "Peut ouvrir des modèles ONLYOFFICE pour les afficher et les imprimer."
 
 #. module: onlyoffice_odoo_templates
 #: model:res.groups,comment:onlyoffice_odoo_templates.group_onlyoffice_odoo_templates_admin
@@ -58,8 +57,8 @@ msgstr "Annuler"
 #, python-format
 msgid "Choose the field below to paste selected parameter to the cursor"
 msgstr ""
-"Sélectionnez la zone ci-dessous pour coller le paramètre sélectionné "
-"au curseur."
+"Sélectionnez la zone ci-dessous pour coller le paramètre sélectionné au "
+"curseur"
 
 #. module: onlyoffice_odoo_templates
 #. odoo-javascript
@@ -67,8 +66,7 @@ msgstr ""
 #, python-format
 msgid "Couldn't insert the field. Please check Automation API."
 msgstr ""
-"Impossible d'insérer le champ. Veuillez vérifier l'API "
-"d'automatisation."
+"Impossible d'insérer le champ. Veuillez vérifier l'API d'automatisation."
 
 #. module: onlyoffice_odoo_templates
 #. odoo-javascript
@@ -139,7 +137,7 @@ msgstr "ID"
 #: code:addons/onlyoffice_odoo_templates/static/src/views/kanban/onlyoffice_kanban_record.js:0
 #, python-format
 msgid "Kanban: no action for type: "
-msgstr "Kanban : aucune action pour le type :"
+msgstr "Kanban : aucune action pour le type : "
 
 #. module: onlyoffice_odoo_templates
 #: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates____last_update
@@ -185,11 +183,6 @@ msgid "Module/ section"
 msgstr "Module/ section"
 
 #. module: onlyoffice_odoo_templates
-#: model:ir.module.category,name:onlyoffice_odoo_templates.module_category_onlyoffice_odoo_templates
-msgid "ONLYOFFICE Template"
-msgstr "Modèle ONLYOFFICE"
-
-#. module: onlyoffice_odoo_templates
 #: model:ir.actions.act_window,name:onlyoffice_odoo_templates.action_onlyoffice_odoo_templates
 #: model:ir.model,name:onlyoffice_odoo_templates.model_onlyoffice_odoo_templates
 #: model:ir.ui.menu,name:onlyoffice_odoo_templates.onlyoffice_menu
@@ -201,8 +194,7 @@ msgstr "Modèles ONLYOFFICE"
 #: code:addons/onlyoffice_odoo_templates/static/src/views/editor/onlyoffice_editor.xml:0
 #, python-format
 msgid "ONLYOFFICE cannot be reached. Please contact admin."
-msgstr ""
-"ONLYOFFICE n'est pas joignable. Veuillez contacter l'administration."
+msgstr "ONLYOFFICE n'est pas joignable. Veuillez contacter l'administration."
 
 #. module: onlyoffice_odoo_templates
 #. odoo-javascript
@@ -210,6 +202,18 @@ msgstr ""
 #, python-format
 msgid "ONLYOFFICE logo"
 msgstr "Logo ONLYOFFICE"
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.module.category,name:onlyoffice_odoo_templates.module_category_onlyoffice_odoo_templates
+msgid "ONLYOFFICE templates"
+msgstr "Modèles ONLYOFFICE"
+
+#. module: onlyoffice_odoo_templates
+#. odoo-python
+#: code:addons/onlyoffice_odoo_templates/models/onlyoffice_odoo_templates.py:0
+#, python-format
+msgid "Only PDF Form can be uploaded."
+msgstr "Seuls les formulaires PDF peuvent être téléchargés."
 
 #. module: onlyoffice_odoo_templates
 #. odoo-javascript
@@ -250,8 +254,8 @@ msgid ""
 "Select an existing template. Leave the field blank to create a blank "
 "template."
 msgstr ""
-"Sélectionnez un modèle existant. Laissez le champ vide pour créer un "
-"« modèle » vierge"
+"Sélectionnez un modèle existant. Laissez le champ vide pour créer un « "
+"modèle » vierge."
 
 #. module: onlyoffice_odoo_templates
 #: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__name
@@ -291,3 +295,18 @@ msgstr "Charger un modèle existant"
 #: model:res.groups,name:onlyoffice_odoo_templates.group_onlyoffice_odoo_templates_user
 msgid "User"
 msgstr "Utilisateur"
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/dialog/onlyoffice_dialog.js:0
+#, python-format
+msgid ""
+"You don't have any templates yet. Please go to the ONLYOFFICE Templates app "
+"to create a new template or ask your admin to create it."
+msgstr ""
+"Vous n'avez pas encore de modèles. Veuillez vous rendre sur l'application "
+"ONLYOFFICE Templates pour créer un nouveau modèle ou demander à votre "
+"administrateur de le faire."
+
+#~ msgid "ONLYOFFICE Template"
+#~ msgstr "Modèle ONLYOFFICE"
