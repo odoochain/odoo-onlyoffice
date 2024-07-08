@@ -23,6 +23,8 @@
         'views/onlyoffice_menu_views.xml'
     ],
 
+    'demo': ['data/templates_data.xml'],
+
     'license': 'LGPL-3',
     'support': 'support@onlyoffice.com',
 
