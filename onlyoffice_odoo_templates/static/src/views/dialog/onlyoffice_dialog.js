@@ -85,15 +85,17 @@ export class TemplateDialog extends Component {
       ["name", "create_date", "create_uid", "attachment_id", "mimetype"],
       { context, order: 'id', limit: this.limit, offset }
     );
+    this.state.templates = records;
+    const length = await this.orm.searchCount("onlyoffice.odoo.templates", domain, { context });
     if (!length) {
       this.dialog.add(AlertDialog, {
         title: this.dialogTitle,
-        body: this.env._t("You don't have any templates yet. Please go to the ONLYOFFICE Templates app to create a new template or ask your admin to create it."),
+        body: _t("You don't have any templates yet. Please go to the ONLYOFFICE Templates app to create a new template or ask your admin to create it."),
       });
       return this.data.close();
+    } else {
+      this.state.totalTemplates = length;
     }
-    this.state.templates = records;
-    this.state.totalTemplates = await this.orm.searchCount("onlyoffice.odoo.templates", domain, { context });
   }
 
   async fillTemplate() {
