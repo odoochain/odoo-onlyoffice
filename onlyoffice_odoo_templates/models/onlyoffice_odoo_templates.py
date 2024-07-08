@@ -2,11 +2,13 @@ import base64
 import copy
 import json
 import re
+import os
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 from odoo.addons.onlyoffice_odoo.utils import file_utils
 from odoo.addons.onlyoffice_odoo_templates.utils import pdf_utils
+from odoo.modules import get_module_path
 
 class OnlyOfficeTemplate(models.Model):
     _name = "onlyoffice.odoo.templates"
@@ -31,6 +33,39 @@ class OnlyOfficeTemplate(models.Model):
         if self.file and self.create_date:
             self.attachment_id.datas = self.file
             self.file = False
+
+    @api.model
+    def _create_demo_data(self):
+        module_path = get_module_path(self._module)
+        templates_dir = os.path.join(module_path, "data", "templates")
+        if not os.path.exists(templates_dir):
+            return
+
+        model_folders = [name for name in os.listdir(templates_dir) if os.path.isdir(os.path.join(templates_dir, name))]
+
+        installed_models = self.env["ir.model"].search([])
+        installed_models_list = [(model.model, model.name) for model in installed_models]
+
+        for model_name in model_folders:
+            if any(model_name == model[0] for model in installed_models_list):
+                templates_path = os.path.join(templates_dir, model_name)
+                templates_name = [name for name in os.listdir(templates_path) if os.path.isfile(os.path.join(templates_path, name)) and name.lower().endswith(".pdf")]
+                for template_name in templates_name:
+                    template_path = os.path.join(templates_path, template_name)
+                    template = open(template_path, "rb")
+                    try:
+                        template_data = template.read()
+                        template_data = base64.encodebytes(template_data)
+                        model = self.env["ir.model"].search([("model", "=", model_name)], limit=1)
+                        name = template_name.rstrip(".pdf")
+                        self.create({
+                            "name": name,
+                            "template_model_id": model.id,
+                            "file": template_data,
+                        })
+                    finally:
+                        template.close()
+        return
 
     @api.model
     def create(self, vals):
