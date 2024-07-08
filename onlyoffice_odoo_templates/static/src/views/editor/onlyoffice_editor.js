@@ -2,6 +2,7 @@
 
 import { registry } from "@web/core/registry";
 import { useBus, useService } from "@web/core/utils/hooks";
+import { cookie } from "@web/core/browser/cookie";
 import { EditorComponent } from "./onlyoffice_editor_component";
 
 import { _t } from "@web/core/l10n/translation";
@@ -16,7 +17,6 @@ class TemplateEditor extends Component {
     this.viewService = useService("view");
     this.EditorComponent = EditorComponent;
     this.notificationService = useService("notification");
-    this.cookies = useService("cookie");
     
     this.state = useState({
       models: null,
@@ -74,7 +74,7 @@ class TemplateEditor extends Component {
             this.documentReady = true;
           },
         };
-        const theme = this.cookies.current.color_scheme;
+        const theme = cookie.get("color_scheme");
         config.editorConfig.customization = {
           ...config.editorConfig.customization,
           uiTheme: theme ? `theme-${theme}` : "theme-light",
