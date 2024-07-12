@@ -220,6 +220,7 @@ class TemplateEditor extends Component {
         if (type === "binary") {
           this.createPictureForm(field);
         }
+        window.docEditor.grabFocus();
       }
     }
   }
