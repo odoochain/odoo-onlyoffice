@@ -311,5 +311,10 @@ msgstr ""
 "um eine neue Vorlage zu erstellen oder bitten Sie Ihren Administrator, sie "
 "zu erstellen."
 
+#. module: onlyoffice_odoo_templates
+#: model:ir.ui.menu,name:onlyoffice_odoo_templates.onlyoffice_submenu
+msgid "Templates"
+msgstr "Vorlagen"
+
 #~ msgid "ONLYOFFICE Template"
 #~ msgstr "ONLYOFFICE-Vorlage"

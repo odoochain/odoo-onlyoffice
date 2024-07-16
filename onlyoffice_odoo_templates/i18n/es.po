@@ -310,5 +310,10 @@ msgstr ""
 "de ONLYOFFICE para crear una plantilla nueva o pida a su administrador que "
 "la cree."
 
+#. module: onlyoffice_odoo_templates
+#: model:ir.ui.menu,name:onlyoffice_odoo_templates.onlyoffice_submenu
+msgid "Templates"
+msgstr "Plantillas"
+
 #~ msgid "ONLYOFFICE Template"
 #~ msgstr "Plantilla de ONLYOFFICE"

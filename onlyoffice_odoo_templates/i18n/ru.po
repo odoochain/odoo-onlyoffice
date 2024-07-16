@@ -308,5 +308,10 @@ msgstr ""
 "У вас пока нет шаблонов. Перейдите в приложение Шаблоны ONLYOFFICE, чтобы "
 "создать новый шаблон, или попросите администратора создать его."
 
+#. module: onlyoffice_odoo_templates
+#: model:ir.ui.menu,name:onlyoffice_odoo_templates.onlyoffice_submenu
+msgid "Templates"
+msgstr "Шаблоны"
+
 #~ msgid "ONLYOFFICE Template"
 #~ msgstr "Шаблон ONLYOFFICE"

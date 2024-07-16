@@ -16,7 +16,7 @@ patch(FormController.prototype, {
       isAvailable: () => activeActions.type === "view",
       sequence: 60,
       icon: "fa fa-print",
-      description: _t("Print With ONLYOFFICE"),
+      description: _t("Print with ONLYOFFICE"),
       callback: () => {
         this.env.services.dialog.add(TemplateDialog, {
           formControllerProps: this.props,
