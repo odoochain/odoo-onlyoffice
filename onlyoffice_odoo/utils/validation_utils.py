@@ -11,16 +11,9 @@ import time
 def valid_url(url):
     if not url:
         return True
-    ip_pattern = "^([0-9]{1,3}\.){3}[0-9]{1,3}$"
-    no_protocol_pattern = "^(http|https):\/\/[0-9A-z.]+.[0-9A-z.]+(|\/)$"
-    patterns = [
-        "^(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32}((\.[\w-]{1,32})*)?)[\/\w-]*$",
-        ip_pattern,
-        no_protocol_pattern,
-    ]
-    for pattern in patterns:
-        if re.findall(pattern, url):
-            return True
+    pattern = "^(https?:\/\/)?[\w-]{1,32}(\.[\w-]{1,32})*[\/\w-]*(:[\d]{1,5}\/?)?$"
+    if re.findall(pattern, url):
+        return True
     return False
 
 def settings_validation(self):
