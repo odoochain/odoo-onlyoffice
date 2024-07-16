@@ -30,7 +30,12 @@ class OnlyOfficeTemplate(models.Model):
 
     @api.onchange("file")
     def _onchange_file(self):
-        if self.file and self.create_date:
+        if self.file and self.create_date: # if file exist
+            decode_file = base64.b64decode(self.file)
+            is_pdf_form = pdf_utils.is_pdf_form(decode_file)
+            if not is_pdf_form:
+                self.file = False
+                raise UserError(_("Only PDF Form can be uploaded."))
             self.attachment_id.datas = self.file
             self.file = False
 
