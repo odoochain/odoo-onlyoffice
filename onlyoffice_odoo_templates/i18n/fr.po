@@ -308,5 +308,10 @@ msgstr ""
 "ONLYOFFICE Templates pour créer un nouveau modèle ou demander à votre "
 "administrateur de le faire."
 
+#. module: onlyoffice_odoo_templates
+#: model:ir.ui.menu,name:onlyoffice_odoo_templates.onlyoffice_submenu
+msgid "Templates"
+msgstr "Modèles"
+
 #~ msgid "ONLYOFFICE Template"
 #~ msgstr "Modèle ONLYOFFICE"

@@ -307,5 +307,10 @@ msgstr ""
 "Non hai ancora alcun modello. Vai all'app Modelli di ONLYOFFICE per creare "
 "un nuovo modello o chiedi al tuo amministratore di crearlo."
 
+#. module: onlyoffice_odoo_templates
+#: model:ir.ui.menu,name:onlyoffice_odoo_templates.onlyoffice_submenu
+msgid "Templates"
+msgstr "Modelli"
+
 #~ msgid "ONLYOFFICE Template"
 #~ msgstr "Modello ONLYOFFICE"

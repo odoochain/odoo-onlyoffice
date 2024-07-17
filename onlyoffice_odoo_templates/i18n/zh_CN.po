@@ -301,5 +301,10 @@ msgid ""
 msgstr ""
 "您还没有任何模板。请进入 ONLYOFFICE 模板应用创建新模板，或让管理员创建。"
 
+#. module: onlyoffice_odoo_templates
+#: model:ir.ui.menu,name:onlyoffice_odoo_templates.onlyoffice_submenu
+msgid "Templates"
+msgstr "模板"
+
 #~ msgid "ONLYOFFICE Template"
 #~ msgstr "ONLYOFFICE 模板"
