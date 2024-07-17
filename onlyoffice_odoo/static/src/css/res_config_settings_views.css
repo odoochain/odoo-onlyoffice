@@ -17,17 +17,18 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    width: 93px;
-    height: 30px;
+    min-width: 93px;
+    max-width: 120px;
+    max-height: 40px;
+    padding: 5px 0;
     background-color: #71639E;
     color: white;
     font-family: 'SF UI Display', sans-serif;
     text-align: center;
-    font-size: 14px;
     font-weight: 500;
     border-radius: 3px;
     top: 40.5px;
-    right: 28px;
+    right: 14px;
 }
 
 @media (max-width: 767px) {
