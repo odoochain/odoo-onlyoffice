@@ -307,5 +307,10 @@ msgstr ""
 "まだテンプレートがありません。ONLYOFFICEテンプレートアプリから新しいテンプ"
 "レートを作成するか、管理者に作成を依頼してください。"
 
+#. module: onlyoffice_odoo_templates
+#: model:ir.ui.menu,name:onlyoffice_odoo_templates.onlyoffice_submenu
+msgid "Templates"
+msgstr "テンプレート"
+
 #~ msgid "ONLYOFFICE Template"
 #~ msgstr "ONLYOFFICEテンプレート"
