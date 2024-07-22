@@ -12,7 +12,7 @@ from urllib.request import urlopen
 
 from odoo import SUPERUSER_ID, http, models
 from odoo.http import request
-from odoo.tools import BytesIO, file_open, translate
+from odoo.tools import BytesIO, file_open, translate, get_lang, DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.addons.onlyoffice_odoo.controllers.controllers import Onlyoffice_Connector
 from odoo.addons.onlyoffice_odoo.utils import config_utils, file_utils, jwt_utils
 
@@ -276,9 +276,17 @@ class OnlyofficeTemplate_Connector(http.Controller):
                                 else:
                                     result[field] = str(data)
                             elif field_type == "date":
-                                result[field] = str(data.strftime("%Y-%m-%d %H:%M:%S"))
+                                date_format = get_lang(request.env).date_format
+                                format_to_use = date_format or DEFAULT_SERVER_DATE_FORMAT
+                                result[field] = str(data.strftime(format_to_use))
                             elif field_type == "datetime":
-                                result[field] = str(data.strftime("%Y-%m-%d"))
+                                date_format = get_lang(request.env).date_format
+                                time_format = get_lang(request.env).time_format
+                                if date_format and time_format:
+                                    format_to_use = f"{date_format} {time_format}"
+                                else:
+                                    format_to_use = DEFAULT_SERVER_DATETIME_FORMAT
+                                result[field] = str(data.strftime(format_to_use))
                             elif field_type == "selection":
                                 selection = record._fields[field].selection
                                 if isinstance(selection, list):
