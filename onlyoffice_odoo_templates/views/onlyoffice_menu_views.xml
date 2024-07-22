@@ -103,7 +103,7 @@
 
         <menuitem id="onlyoffice_menu" 
             name="ONLYOFFICE Templates" 
-            web_icon="onlyoffice_odoo_templates,static/description/icon.svg"
+            web_icon="onlyoffice_odoo_templates,static/description/icon.png"
             sequence="30"
             groups="onlyoffice_odoo_templates.group_onlyoffice_odoo_templates_user,onlyoffice_odoo_templates.group_onlyoffice_odoo_templates_admin"
             action="action_onlyoffice_odoo_templates"/>
