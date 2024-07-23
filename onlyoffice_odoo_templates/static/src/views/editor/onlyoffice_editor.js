@@ -46,7 +46,7 @@ class TemplateEditor extends Component {
         // Set id to URL
         if (!new URLSearchParams(window.location.hash).has("id")) {
           const newUrl = window.location.href + `&id=${this.props.id}`;
-          history.pushState(null, null, newUrl);
+          history.replaceState(null, null, newUrl);
         }
 
         const models = JSON.parse(
