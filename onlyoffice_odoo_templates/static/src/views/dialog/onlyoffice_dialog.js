@@ -53,7 +53,7 @@ export class TemplateDialog extends Component {
     this.dp = new DropPrevious();
 
     onWillStart(async () => {
-      const { resModel } = this.props.formControllerProps;
+      const { resModel } = this.props;
       const views = await this.viewService.loadViews({
         resModel: "onlyoffice.odoo.templates",
         context: this.props.context,
@@ -105,7 +105,7 @@ export class TemplateDialog extends Component {
     this.state.isProcessing = true;
 
     const templateId = this.state.selectedTemplateId;
-    const { resId, resModel } = this.props.formControllerProps;
+    const { resId, resModel } = this.props;
 
     const response = await this.rpc("/onlyoffice/template/get_filled_template", {
       template_id: templateId,

@@ -13,7 +13,8 @@ patch(FormController.prototype, "FormController.ActionButton", {
       description: this.env._t("Print with ONLYOFFICE"),
       callback: () => {
         this.env.services.dialog.add(TemplateDialog, {
-          formControllerProps: this.props,
+          resId: this.model.root.resId,
+          resModel: this.props.resModel,
         });
       },
       skipSave: true,
