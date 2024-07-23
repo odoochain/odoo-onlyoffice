@@ -1,6 +1,6 @@
 # Change Log
 
-## 
+## 4.0.0
 ## Added
 - advanced server settings for specifying internal addresses
 - validation of server settings on the settings page
