@@ -1,6 +1,6 @@
 # Change Log
 
-## 
+## 2.0.2
 ## Added
 - new templates module
 - creating and editing templates in editor
