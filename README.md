@@ -11,8 +11,8 @@ The app allows to:
 
 Supported formats:
 
-* For editing: DOCX, DOCXF, XLSX, PPTX.
-* For viewing: DJVU, DOC, DOCM, DOT, DOTM, DOTX, EPUB, FB2, FODT, HTML, MHT, ODT, OFORM, OTT, OXPS, PDF, RTF, TXT, XPS, XML, CSV, FODS, ODS, OTS, XLS, XLSB, XLSM, XLT, XLTM, XLTX, FODP, ODP, OTP, POT, POTM, POTX, PPS, PPSM, PPSX, PPT, PPTM.
+* For editing: DOCX, XLSX, PPTX, PDF.
+* For viewing: DJVU, DOC, DOCM, DOCXF, DOT, DOTM, DOTX, EPUB, FB2, FODT, HTML, MHT, ODT, OFORM, OTT, OXPS, RTF, TXT, XPS, XML, CSV, FODS, ODS, OTS, XLS, XLSB, XLSM, XLT, XLTM, XLTX, FODP, ODP, OTP, POT, POTM, POTX, PPS, PPSM, PPSX, PPT, PPTM.
 
 ## Installing ONLYOFFICE Docs
 
@@ -127,12 +127,18 @@ The table below will help you make the right choice.
 | Font and paragraph formatting   | + | + |
 | Object insertion                | + | + |
 | Transitions                     | + | + |
+| Animations                      | + | + |
 | Presenter mode                  | + | + |
 | Notes                           | + | + |
 | **Form creator features** | **Community Edition** | **Enterprise Edition** |
 | Adding form fields           | + | + |
 | Form preview                    | + | + |
 | Saving as PDF                   | + | + |
+| **Working with PDF**      | **Community Edition** | **Enterprise Edition** |
+| Text annotations (highlight, underline, cross out) | + | + |
+| Comments                        | + | + |
+| Freehand drawings               | + | + |
+| Form filling                    | + | + |
 | | [Get it now](https://www.onlyoffice.com/download-docs.aspx#docs-community)  | [Start Free Trial](https://www.onlyoffice.com/download-docs.aspx#docs-enterprise)  |
 
 \* If supported by DMS.

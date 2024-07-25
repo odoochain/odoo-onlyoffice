@@ -2,24 +2,26 @@
 
 /*
  *
- * (c) Copyright Ascensio System SIA 2023
+ * (c) Copyright Ascensio System SIA 2024
  *
 */
 
 import { registerPatch } from '@mail/model/model_core';
 import { attr } from '@mail/model/model_field';
+import { _t } from "@web/core/l10n/translation";
 
 const oo_editable_formats = [
     "docx",
-    "docxf",
     "xlsx",
     "pptx",
+    "pdf",
 ]
 
 const oo_viewable_formats = [
     "djvu",
     "doc",
     "docm",
+    "docxf",
     "dot",
     "dotm",
     "dotx",
@@ -31,12 +33,10 @@ const oo_viewable_formats = [
     "odt",
     "ott",
     "oxps",
-    "pdf",
     "rtf",
     "txt",
     "xps",
     "xml",
-    "oform",
     "csv",
     "fods",
     "ods",
@@ -67,8 +67,31 @@ registerPatch({
             window.open(this.onlyofficeEditorUrl, '_blank');
         },
 
-        onClickOnlyofficeEdit(ev) {
+        async onClickOnlyofficeEdit(ev) {
             ev.stopPropagation();
+            var demo = await this.messaging.rpc({
+                model: 'ir.config_parameter',
+                method: 'get_param',
+                args: ['onlyoffice_connector.doc_server_demo']
+            });
+            var demoDate = await this.messaging.rpc({
+                model: 'ir.config_parameter',
+                method: 'get_param',
+                args: ['onlyoffice_connector.doc_server_demo_date']
+            });
+            demoDate = new Date(Date.parse(demoDate))
+            if (demo && demoDate && demoDate instanceof Date) {
+                const today = new Date();
+                const difference = Math.floor((today - new Date(Date.parse(demoDate))) / (1000 * 60 * 60 * 24));
+                if (difference > 30) {
+                    this.messaging.userNotificationManager.sendNotification({
+                        message: this.env._t("The 30-day test period is over, you can no longer connect to demo ONLYOFFICE Docs server"),
+                        title: this.env._t("ONLYOFFICE Docs server"),
+                        type: 'warning',
+                    });
+                    return;
+                }
+            }
             this.openOnlyofficeEditor();
         },
     },
