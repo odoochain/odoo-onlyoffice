@@ -137,6 +137,8 @@ class Onlyoffice_Connector(http.Controller):
         filename = self.filter_xss(data["name"])
 
         security_token = jwt_utils.encode_payload(request.env, { "id": request.env.user.id }, config_utils.get_internal_jwt_secret(request.env))
+        security_token = security_token.decode('utf-8') if isinstance(security_token, bytes) else security_token
+        access_token = access_token.decode('utf-8') if isinstance(access_token, bytes) else access_token
         path_part = str(data["id"]) + "?oo_security_token=" + security_token + ("&access_token=" + access_token if access_token else "")
 
         document_type = file_utils.get_file_type(filename)
