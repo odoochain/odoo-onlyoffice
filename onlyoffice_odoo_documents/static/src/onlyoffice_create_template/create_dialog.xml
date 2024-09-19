@@ -51,6 +51,16 @@
                             t-att-title="Presentation"/>
                         <div class="o-template-item-name">Presentation</div>
                     </div>
+                    <div class="o-onlyoffice-create-template"
+                        t-on-click="() => this._selectedFormat('pdf')"
+                        t-on-dblclick="_createFile"
+                        t-att-class="_isSelected('pdf') ? 'o-template-selected': ''">
+                        <img
+                            class="o-onlyoffice-create-icon"
+                            src="onlyoffice_odoo_documents/static/svg/formats/pdf.svg"
+                            t-att-title="PDF"/>
+                        <div class="o-template-item-name">PDF Form</div>
+                    </div>
                 </div>
                 <t t-set-slot="footer">
                     <button

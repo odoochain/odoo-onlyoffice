@@ -5,6 +5,8 @@ To be able to work with office files within Odoo Enterprise, you will need an in
 
 **Please note:** You need to obtain a license for ONLYOFFICE Docs with the included Automation API option.
 
+**Please note**: ONLYOFFICE demo templates will only be added to the Odoo modules that are already installed. That's why we strongly recommend installing ONLYOFFICE Templates after installing other Odoo modules such as CRM, Sales, Calendar, etc.
+
 ONLYOFFICE app configuration
 ============================
 
