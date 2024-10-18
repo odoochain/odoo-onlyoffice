@@ -52,6 +52,8 @@ Then, install the package:
 `pip install pyjwt`
 
 Once ready, switch your Odoo to the developer mode and click **Apps -> Update Apps List** OR just restart your Odoo instance.
+
+**Please note (refers to the ONLYOFFICE Templates app)**: ONLYOFFICE demo templates will only be added to the Odoo modules that are already installed. That's why we strongly recommend installing ONLYOFFICE Templates after installing other Odoo modules such as CRM, Sales, Calendar, etc.
  
 ## Configuring Odoo ONLYOFFICE integration app
 

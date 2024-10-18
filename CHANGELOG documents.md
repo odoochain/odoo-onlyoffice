@@ -1,5 +1,8 @@
 # Change Log
 
+## Added
+- added creation of pdf forms
+
 ## 4.0.1
 ## Changed
 - replace docxf with pdf as a form template
